@@ -6,12 +6,19 @@
 
 var React = require('react-native');
 
+// destructuring (ES6)
 var {
   AppRegistry,
   StyleSheet,
   Text,
   View,
 } = React;
+/*
+  without destrucutring, this would look like:
+  var AppRegistry = React.AppRegistry;
+  var StyleSheet = React.StyleSheet;
+  ...etc
+*/
 
 class githubNotetaker extends React.Component{
   render () {
