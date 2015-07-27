@@ -85,7 +85,10 @@ class Main extends React.Component{
       .then(
         (res) => { // response from API call is json object
           if (res.message === 'Not Found') {
-            error: 'User not found!'
+            this.setState({
+              error: 'User not found!',
+              isLoading: false
+            })
           } 
           else {
           // reroute to the next view (Dashboard)
@@ -95,17 +98,22 @@ class Main extends React.Component{
               //  passing that github info
               passProps: {userInfo: res} 
             })
+            // in case user comes back to this page
+            this.setState({
+              isLoading: false,
+              error: false,
+              username: ''
+            })
           }
-
-          this.setState({
-            isLoading: false,
-            error: false,
-            username: ''
-          })
         })
   }
 
   render () {
+    // empty view that will show text only when there is an error
+    var showErr = (
+      this.state.error ? <Text> {this.state.error} </Text> : <View></View>
+    )
+
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.title}> Search for a github user </Text>
@@ -113,12 +121,18 @@ class Main extends React.Component{
           style = {styles.searchInput}
           value = {this.state.username} 
           onChange = {this.handleChange.bind(this)} />
-          <TouchableHighlight
-            style = {styles.button} 
-            onPress={this.handleSubmit.bind(this)} 
-            underlayColor = "white">
-              <Text style={styles.buttonText}> GO </Text>
-            </TouchableHighlight>
+        <TouchableHighlight
+          style = {styles.button} 
+          onPress={this.handleSubmit.bind(this)} 
+          underlayColor = "white">
+            <Text style={styles.buttonText}> GO </Text>
+        </TouchableHighlight>
+        <ActivityIndicatorIOS 
+          animating={this.state.isLoading} 
+          color='#111' 
+          size='large'> 
+        </ActivityIndicatorIOS> 
+        {showErr}
       </View>
     )
   }
