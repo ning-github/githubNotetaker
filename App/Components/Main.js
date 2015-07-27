@@ -1,4 +1,6 @@
 var React = require('react-native');
+var api = require('../Utils/api');
+var Dashboard = require('./Dashboard');
 
 var {
   View,
@@ -13,6 +15,7 @@ var styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     padding: 30,
+    // 65 is important to make sure content is not covered by menubar
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
@@ -77,9 +80,29 @@ class Main extends React.Component{
     this.setState({
       isLoading: true
     });
-    console.log('submitting search for ', this.state.username);
     // fetch data from github
-    // reroute to the next view, passing that github info
+    api.getBio(this.state.username)
+      .then(
+        (res) => { // response from API call is json object
+          if (res.message === 'Not Found') {
+            error: 'User not found!'
+          } 
+          else {
+          // reroute to the next view (Dashboard)
+            this.props.navigator.push({
+              title: res.name || 'Select an Option',
+              component: Dashboard,
+              //  passing that github info
+              passProps: {userInfo: res} 
+            })
+          }
+
+          this.setState({
+            isLoading: false,
+            error: false,
+            username: ''
+          })
+        })
   }
 
   render () {
