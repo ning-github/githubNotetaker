@@ -5,12 +5,14 @@
 'use strict';
 
 var React = require('react-native');
+var Main = require('./App/Components/Main');
 
 // destructuring (ES6)
 var {
   AppRegistry,
   StyleSheet,
   Text,
+  NavigatorIOS,
   View,
 } = React;
 /*
@@ -23,18 +25,11 @@ var {
 class githubNotetaker extends React.Component{
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native, {'\n'}Mr. President!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <NavigatorIOS
+        initialRoute = {{
+          title: 'Github Notetaker',
+          component: Main
+        }} />
     );
   }
 };
