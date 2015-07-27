@@ -106,7 +106,7 @@ class Main extends React.Component{
             })
           }
         })
-  }
+  };
 
   render () {
     // empty view that will show text only when there is an error
