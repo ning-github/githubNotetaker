@@ -22,10 +22,18 @@ var {
   ...etc
 */
 
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: ''
+  },
+});
+
 class githubNotetaker extends React.Component{
   render () {
     return (
       <NavigatorIOS
+        style = {styles.container}
         initialRoute = {{
           title: 'Github Notetaker',
           component: Main
@@ -34,24 +42,5 @@ class githubNotetaker extends React.Component{
   }
 };
 
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'teal',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: 'yellow'
-  },
-  instructions: {
-    textAlign: 'center',
-    color: 'white',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('githubNotetaker', () => githubNotetaker);
