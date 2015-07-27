@@ -44,16 +44,17 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'teal',
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color: 'yellow'
   },
   instructions: {
     textAlign: 'center',
-    color: '#333333',
+    color: 'white',
     marginBottom: 5,
   },
 });
