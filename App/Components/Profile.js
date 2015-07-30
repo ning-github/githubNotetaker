@@ -15,7 +15,7 @@ var styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: 'yellow',
+    color: 'white',
     alignSelf: 'center'
   },
   rowContainer: {
