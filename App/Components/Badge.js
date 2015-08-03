@@ -17,7 +17,7 @@ var styles = StyleSheet.create({
     fontSize: 21,
     marginTop: 10,
     marginBottom: 5,
-    color: 'yellow'
+    color: 'white'
   },
   handle: {
     alignSelf: 'center',
